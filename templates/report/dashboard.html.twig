@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>Аналитика</title>
+<style>body{font-family:Arial,sans-serif;margin:20px}table{width:100%;border-collapse:collapse;margin:15px 0}th,td{padding:10px;border:1px solid #ddd}th{background:#f4f4f4}</style>
+</head><body>
+<h1> Аналитика книжного магазина</h1>
+
+<div>
+  <h2>Самая дорогая книга ("золотой том")</h2>
+  {% if goldBook %}
+    <p><strong>{{ goldBook.name }}</strong> — {{ goldBook.price }} ₽</p>
+  {% endif %}
+</div>
+
+<div>
+  <h2>Средний чек: {{ averageOrder }} ₽</h2>
+</div>
+
+<div>
+  <h2>Топ-3 покупателей</h2>
+  <table>
+    <tr><th>Имя</th><th>Email</th><th>Потрачено</th></tr>
+    {% for p in topSpenders %}
+      <tr><td>{{ p.name }}</td><td>{{ p.email }}</td><td>{{ p.totalSpent }} ₽</td></tr>
+    {% endfor %}
+  </table>
+</div>
+
+<div>
+  <h2>Все покупатели</h2>
+  <table>
+    <tr><th>Имя</th><th>Email</th><th>Заказов</th></tr>
+    {% for p in customers %}
+      <tr><td>{{ p.name }}</td><td>{{ p.email }}</td><td>{{ p.orderCount }}</td></tr>
+    {% endfor %}
+  </table>
+</div>
+
+<p><a href="{{ path('report_orders') }}">Посмотреть все заказы →</a></p>
+<p><a href="{{ path('test_data') }}">Создать тестовые данные</a></p>
+</body></html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>Заказы</title>
+<style>body{font-family:Arial,sans-serif;margin:20px}table{width:100%;border-collapse:collapse}th,td{padding:8px;border:1px solid #ddd}th{background:#f4f4f4}</style>
+</head><body>
+<h1>Все заказы с суммой</h1>
+<table>
+  <tr><th>ID</th><th>Покупатель</th><th>Книги</th><th>Сумма</th></tr>
+  {% for order in orders %}
+    <tr>
+      <td>{{ order.id }}</td>
+      <td>{{ order.people.name }} ({{ order.people.email }})</td>
+      <td>
+        {% for book in order.books %}
+          {{ book.name }} — {{ book.price }} ₽<br>
+        {% endfor %}
+      </td>
+      <td><strong>{{ order.total }} ₽</strong></td>
+    </tr>
+  {% endfor %}
+</table>
+<p><a href="{{ path('dashboard') }}">← Назад</a></p>
+</body></html>
