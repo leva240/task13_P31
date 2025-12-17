@@ -37,10 +37,25 @@ class Order
     }
 
     // Геттеры и сеттеры
-    public function getId(): ?int { return $this->id; }
-    public function getPeople(): ?People { return $this->people; }
-    public function setPeople(?People $people): self { $this->people = $people; return $this; }
-    public function getBooks(): Collection { return $this->books; }
+    public function getId(): ?int 
+    { 
+        return $this->id; 
+    }
+    public function getPeople(): ?People 
+    {
+         return $this->people; 
+    }
+    public function setPeople(?People $people): self
+    { 
+        $this->people = $people; 
+        return $this; 
+    }
+    public function getBooks(): Collection 
+    {
+        return $this->books; 
+    }
+
+
     public function addBook(Book $book): self
     {
         if (!$this->books->contains($book)) {
